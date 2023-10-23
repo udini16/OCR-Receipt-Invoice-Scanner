@@ -64,3 +64,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Tesseract OCR for PHP
+
+If you want to use this OCR, you must download tesseractocr from thiagoalessio in github.
+
+## Guide
+1. You can download tesseractOCR.
+2. Create a Laravel project.
+3. Install Package tesseractOCR from thiagoalessio.
+4. Follow OCRController.
+5. Create model and migration for database purpose.
+6. Done.
