@@ -20,7 +20,7 @@ class OcrController extends Controller
         $image = $request->file("image");
         if(isset($image) && $image->getPathName()){
             $ocr = new TesseractOCR();
-            $ocr->lang('eng', 'jpn', 'spa', 'deu');
+            $ocr->lang('eng');
             $ocr->image($image->getPathName());
 
             $parsedText = $ocr->run();
@@ -255,11 +255,16 @@ class OcrController extends Controller
     public function extractTotal($text) {
         $pattern1 = '/TOTAL RM(\d+\.\d+)/i';
         $pattern2 = '/Total\s*\|\s*([0-9,.]+)\s*/';
+        $pattern3 = '/Total Due \(RM\) (\d+\.\d+)/i';
+        
         if (preg_match($pattern1, $text, $matches1)) {
             return $matches1[1];
         }
         elseif(preg_match($pattern2, $text, $matches2)){
             return $matches2[1];
+        }
+        elseif(preg_match($pattern3, $text, $matches3)){
+            return $matches3[1];
         }
     
         return null;
